@@ -102,7 +102,7 @@
       width: 55px !important;
       border-radius: 50%;
       float: left;
-      position: fixed;
+      position: absolute;
       right: 30px;
       top: 8px;
     }

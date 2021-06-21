@@ -52,12 +52,13 @@
 }
 
 .fileForm{
-  position: absolute;
-  width: 837px;
-  height: 393px;
-  left: 277px;
-  top: 147px;
-  background: #FFFFFF;
+    position: absolute;
+    width: 80%;
+    height: 60%;
+    left: 13%;
+    top: 24%;
+    background: #FFFFFF;
+    transition: 0.5s;
 }
 
 div.file-listing{
@@ -87,7 +88,7 @@ a.submit-button{
 
 <template>
   <div id="file-drag-drop">
-    <form ref="fileform" class="fileForm">
+    <form ref="fileform" v-bind:style="{ left: leftWrapper, width: widthWrapper }" class="fileForm">
       <div class="inp_label">
             <label class="dropzone-label grid place-items-center w-full h-full pt-10 pb-12 cursor-pointer" for="dropzone-file">
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="pointer-events-none text-current dropzone-label-icon bi bi-upload" viewBox="0 0 16 16">
@@ -125,6 +126,8 @@ a.submit-button{
         uploadPercentage: 0
       }
     },
+
+    props: ['widthWrapper', 'leftWrapper'],
 
     mounted(){
 

@@ -1,8 +1,9 @@
 <template>
 <div>
-	<UploadSuccess v-if="successShow"/>
+	<UploadSuccess v-if="successShow" :widthWrapper="widthWrapper" 
+        :leftWrapper="leftWrapper"/>
  <div class="justify-content-center file_drap_inp" v-if="!successShow">
-        <div class="dropzone-wrapper border-current border-dashed">
+        <div class="fileForm" v-bind:style="{ left: leftWrapper, width: widthWrapper }">
     <div class="large-12 medium-12 small-12 cell">
       <br>
       <progress max="100" :value.prop="uploadPercentage" :data-label.prop="uploadPercentage">Uploading {{this.uploadPercentage}}%</progress>
@@ -72,7 +73,7 @@ progress::-moz-progress-bar {
 		}
 	})
 	export default {
-		props: ['files'],
+		props: ['files', 'widthWrapper', 'leftWrapper'],
 		data(){
 			return {
 				uploadPercentage: 0,

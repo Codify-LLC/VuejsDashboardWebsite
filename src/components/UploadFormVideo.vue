@@ -1,6 +1,6 @@
 <template>
     <div class="justify-content-center file_drap_inp">
-        <div class="dropzone-wrapper border-current border-dashed">
+        <div class="fileForm" v-bind:style="{ left: leftWrapper, width: widthWrapper }">
             <div v-for="(file, key) in files" v-bind:key="key">
                 <video autoplay class="preview VideoUpload" alt="" v-bind:ref="'preview'+parseInt( key )"/>
             </div>
@@ -18,7 +18,7 @@
 <script>
 export default{
     name: 'UploadFormVideo',
-    props: ['files'],
+    props: ['files', 'widthWrapper', 'leftWrapper'],
     mounted() {
         this.getVideoPreviews();
     },

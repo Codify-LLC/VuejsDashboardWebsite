@@ -1,7 +1,7 @@
 <template>
     <!-- SIDEBAR -->
     <div class="sidebar_navigation">
-    <input type="checkbox" id="btnControl"/>
+    <input type="checkbox" id="btnControl" @click="sizeChangeWrapper()"/>
       <label class="btn" for="btnControl">
         <div class="sidebar_navigation">
             <div class="spaceAbove">
@@ -29,8 +29,10 @@
 <script>
   export default {
     name: 'Sidebar',
-    props: {
-      msg: String
+    methods: {
+      sizeChangeWrapper() {
+        this.$emit('changeSize')
+      }
     }
   }
   </script>
@@ -41,7 +43,7 @@
       position: fixed;
       top: 0px;
       left: 0;
-      width: 75px;
+      width: 7%;
       height: 100%;
       background-color: white;
       transition: 0.5s;
@@ -49,7 +51,7 @@
       z-index: 100;
     }
     #btnControl:checked + label > .sidebar_navigation {
-      width: 250px;
+      width: 22%;
       transition: 0.5s;
     }
     #btnControl:checked + label > .sidebar_navigation .dashboardUser {
@@ -63,6 +65,10 @@
       animation: fadein 1s;
       transition: 2s;
     }
+
+     #btnControl:checked + label > .sidebar_navigation ul li a .title {
+       display: block;
+     }
 
     @keyframes fadein {
       from { opacity: 0; }
@@ -120,7 +126,7 @@
     }
     .sidebar_navigation ul li a .title {
       position: relative;
-      display: block;
+      display: none;
       padding: 0 25px;
       height: 60px;
       line-height: 60px;

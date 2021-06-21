@@ -2,16 +2,33 @@
     
       <div> 
         <Navbar v-on:clicked="onClickChild"/>
-        <Sidebar/>
-        <p class="uploadContentText">
+        <Sidebar v-on:changeSize="changeUploadContentPosition"/>
+        
+        <p class="uploadContentText" v-bind:style="{ left: computedLeft }">
           <strong>
             Upload Content
           </strong>
         </p>
-        <UploadSection v-if="sectionShow" v-on:previewTrigger="sendImagePreviews"/>
-        <UploadFormVideo v-if="videoFormShow" :files="files" v-on:uploadFile="sendFile"/>
-        <UploadFormImg v-if="imgFormShow" :files="files" v-on:uploadFile="sendFile"/>
-        <UploadProgress v-if="progressShow" :files="files"/>
+
+        <UploadSection v-if="sectionShow" v-on:previewTrigger="sendImagePreviews" 
+        :widthWrapper="widthWrapper" 
+        :leftWrapper="leftWrapper"/>
+
+        <UploadFormVideo 
+        v-if="videoFormShow" 
+        :files="files"
+        :widthWrapper="widthWrapper" 
+        :leftWrapper="leftWrapper" 
+        v-on:uploadFile="sendFile">
+        </UploadFormVideo>
+
+        <UploadFormImg v-if="imgFormShow" :files="files" v-on:uploadFile="sendFile"
+        :widthWrapper="widthWrapper" 
+        :leftWrapper="leftWrapper"/>
+
+        <UploadProgress v-if="progressShow" :files="files"
+        :widthWrapper="widthWrapper" 
+        :leftWrapper="leftWrapper"/>
       </div>
     
 </template>
@@ -33,7 +50,15 @@ import UploadProgress from "./UploadProgress.vue"
         sectionShow: true,
         progressShow: false,
         files: [],
+        left: '14%',
+        leftWrapper: '13%',
+        widthWrapper: '80%'
         }
+    },
+    computed: {
+      computedLeft: function () {
+        return this.left;
+      }
     },
     components: {
         Navbar,
@@ -46,6 +71,18 @@ import UploadProgress from "./UploadProgress.vue"
     methods: {
       onClickChild(value) {
         this.$emit('clicked', value)
+      },
+
+      changeUploadContentPosition() {
+        if (this.left == "14%") {
+          this.left = '25%'
+          this.widthWrapper = '74%'
+          this.leftWrapper = '24%'
+        } else {
+          this.left = '14%'
+          this.leftWrapper = '13%'
+          this.widthWrapper = '80%'
+        }
       },
 
       sendImagePreviews(value){
@@ -74,9 +111,10 @@ import UploadProgress from "./UploadProgress.vue"
 
   <style>
     .uploadContentText{
-      position: absolute;
-      top: 20%;
-      left: 22%;
-      z-index: 200;
+        position: absolute;
+        top: 20%;
+        left: 14%;
+        z-index: 200;
+        transition: 0.5s;
     }
   </style>

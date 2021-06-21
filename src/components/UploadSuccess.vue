@@ -1,6 +1,6 @@
 <template>
 <div class="justify-content-center file_drap_inp">
-        <div class="dropzone-wrapper">
+        <div class="fileForm" v-bind:style="{ left: leftWrapper, width: widthWrapper }">
                 <video autoplay  src="../../assets/62669-success-lottie-animation.mp4"></video>
                 <div class="successText">
                     Upload Sucessful
@@ -12,6 +12,7 @@
 <script>
 export default{
     name: 'UploadSucess',
+    props: ['widthWrapper', 'leftWrapper'],
     components: {
     },
 }
