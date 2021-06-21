@@ -7,7 +7,13 @@
         <div class="d-flex justify-content-center" id="">
           <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
             <li class="nav-item">
-              <label class="btn" for="btnControl"><i class="nav_bar fas fa-bars"></i></label>
+              <label class="btn" for="btnControl">
+                <svg width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="27" height="2" fill="#F4F4F4"/>
+                  <rect y="19" width="27" height="2" fill="#F4F4F4"/>
+                  <rect y="10" width="27" height="2" fill="#F4F4F4"/>
+                </svg>
+              </label>
             </li>
             <li class="nav-item">
               <img class="navbar_flyer_logo" src="../../assets/FLYERLOGO.png" alt="" />
@@ -56,6 +62,13 @@
   </script>
 
 <style>
+    label.btn {
+        height: 55px;
+        width: 55px;
+        margin: 20px 40px;
+        padding-top: 12px;
+        margin-right: 15px
+    }
     .navbar-nav{
         flex-direction: row !important;
     }
@@ -96,6 +109,7 @@
       margin: 20px 40px;
       height: 55px !important;
       width: 55px !important;
+      margin-left: 15px;
     }
     .userLogo {
       height: 55px !important;
